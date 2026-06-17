@@ -1,8 +1,8 @@
 import Chakana from "./Chakana";
 
 const links = [
-  { href: "#servicios", label: "Servicios" },
   { href: "#trabajos", label: "Trabajos" },
+  { href: "#servicios", label: "Servicios" },
   { href: "#proceso", label: "Proceso" },
   { href: "#contacto", label: "Contacto" },
 ];

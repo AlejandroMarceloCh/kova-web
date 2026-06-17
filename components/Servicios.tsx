@@ -14,7 +14,7 @@ export default function Servicios() {
   return (
     <section id="servicios" className="hairline">
       <div className="shell py-24 sm:py-32">
-        <SectionLabel kicker="Servicios" heading="Lo que construimos." />
+        <SectionLabel kicker="Servicios" heading="Lo que hacemos." />
 
         <div>
           {services.map((s, i) => (

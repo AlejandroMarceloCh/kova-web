@@ -23,7 +23,7 @@ const team = [
     initials: "AM",
     name: "Alejandro Marcelo",
     role: "Data Engineering & Full Stack Lead",
-    bio: "Full stack de productos de datos. ERPs, analítica y ML en producción para empresas en Lima.",
+    bio: "Construye productos de datos de punta a punta. ERPs, analítica y ML en producción para empresas en Lima.",
     href: "#",
     accent: "var(--gold)",
   },

@@ -33,10 +33,10 @@ export default function Hero() {
             <motion.p
               variants={item}
               className="mt-8 text-muted"
-              style={{ fontSize: "clamp(16px, 1.6vw, 19px)", lineHeight: 1.6, maxWidth: "34ch" }}
+              style={{ fontSize: "clamp(16px, 1.6vw, 19px)", lineHeight: 1.6, maxWidth: "38ch" }}
             >
-              Construimos el software y la inteligencia que tu operación necesita
-              para dejar de frenarse — y lo seguimos hasta que funciona de verdad.
+              Construimos el software y los modelos que tu operación necesita para
+              no frenarse. Hablas directo con quien los programa — sin intermediarios.
             </motion.p>
 
             <motion.div variants={item} className="mt-10">
