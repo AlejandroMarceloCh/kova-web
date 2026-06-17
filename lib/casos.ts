@@ -7,9 +7,9 @@ export type Bloque = {
 
 export type Caso = {
   slug: string;
-  eyebrow: string[];
   title: string;
   lead: string;
+  systemNote: string;
   stats: { v: string; l: string }[];
   blocks: Bloque[];
   stack: string[];
@@ -19,9 +19,9 @@ export type Caso = {
 export const casos: Caso[] = [
   {
     slug: "wasi",
-    eyebrow: ["PropTech", "Machine Learning", "Lima"],
     title: "Wasi",
     lead: "Un motor que predice el precio justo de alquiler y venta en Lima. Del dato crudo al producto en producción.",
+    systemNote: "Cada zona de Lima pintada por su precio real de mercado. Donde el calor sube, el modelo encontró señal — y la explica.",
     stats: [
       { v: "Lima", l: "Cobertura completa" },
       { v: "2", l: "Modelos especializados" },
@@ -58,9 +58,9 @@ export const casos: Caso[] = [
   },
   {
     slug: "inmoba",
-    eyebrow: ["PropTech", "Startup Perú 11G"],
     title: "Inmoba",
     lead: "Decisiones inmobiliarias con datos. Ganadora del fondo Startup Perú 11G.",
+    systemNote: "El motor de recomendación ordena cada oportunidad por qué tan bien encaja con lo que el inversionista busca.",
     stats: [
       { v: "11G", l: "Startup Perú · CONCYTEC" },
       { v: "CTO", l: "Desde el día 1" },
@@ -89,7 +89,7 @@ export const casos: Caso[] = [
         ],
       },
     ],
-    stack: ["Machine Learning", "Full-stack", "Data pipeline", "PropTech"],
+    stack: ["Python", "Machine Learning", "React", "FastAPI", "Data pipeline"],
     cta: {
       heading: "¿Construyes un producto de datos?",
       text: "Te llevamos del modelo al producto.",
@@ -97,9 +97,9 @@ export const casos: Caso[] = [
   },
   {
     slug: "erp",
-    eyebrow: ["ERP", "Industria", "Lima"],
     title: "ERP & Costos",
     lead: "ERP y analítica para una industria en Lima. De hojas de cálculo a tiempo real.",
+    systemNote: "El costo de cada producto descompuesto en sus partes, actualizado en vivo. Lo que antes era un cierre de días.",
     stats: [
       { v: "0", l: "Hojas de cálculo manuales" },
       { v: "Real-time", l: "Dashboards de costos" },

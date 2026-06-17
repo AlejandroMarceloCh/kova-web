@@ -1,12 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import type { ComponentType } from "react";
 import Reveal from "./Reveal";
 import Chakana from "./Chakana";
+import WasiViz from "./viz/WasiViz";
+import InmobaViz from "./viz/InmobaViz";
+import ErpViz from "./viz/ErpViz";
 import type { Caso } from "@/lib/casos";
 
+const VIZ: Record<string, ComponentType> = {
+  wasi: WasiViz,
+  inmoba: InmobaViz,
+  erp: ErpViz,
+};
+
+function BlockLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3">
+      <Chakana size={13} color="var(--terra)" />
+      <span className="mono-label">{children}</span>
+    </div>
+  );
+}
+
 export default function CasoEstudio({ caso }: { caso: Caso }) {
+  const Viz = VIZ[caso.slug];
+
   return (
     <>
       {/* header de caso */}
@@ -26,52 +46,71 @@ export default function CasoEstudio({ caso }: { caso: Caso }) {
       </header>
 
       <main className="relative overflow-hidden pb-28 pt-32">
-        {/* glow + campo */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="andean-field absolute inset-0" style={{ opacity: 0.04 }} />
-          <motion.div
-            className="absolute rounded-full"
-            style={{ top: "-12%", right: "-8%", width: 600, height: 600, background: "radial-gradient(circle, rgba(210,85,42,.16), transparent 62%)", filter: "blur(60px)" }}
-            animate={{ x: [0, -24, 0], y: [0, 20, 0] }}
-            transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
+        {/* campo andino sutil — único elemento de fondo */}
+        <div className="andean-field pointer-events-none absolute inset-0" style={{ opacity: 0.035 }} />
 
         <div className="shell relative max-w-4xl">
 
           <Reveal delay={0.05}>
-            <h1 className="font-display tighter text-ink" style={{ fontSize: "clamp(30px, 5vw, 56px)", lineHeight: 1.05 }}>
+            <h1 className="font-display tighter text-ink" style={{ fontSize: "clamp(34px, 6vw, 64px)", lineHeight: 1.02 }}>
               {caso.title}
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-5 max-w-2xl text-muted" style={{ fontSize: "clamp(16px, 1.7vw, 20px)", lineHeight: 1.6 }}>
+            <p className="mt-6 max-w-2xl text-muted" style={{ fontSize: "clamp(16px, 1.7vw, 21px)", lineHeight: 1.55 }}>
               {caso.lead}
             </p>
           </Reveal>
 
-          {/* stats */}
+          {/* stats — tira tipográfica con hairlines, jerarquía por escala */}
           <Reveal delay={0.15}>
-            <div className="stepped mt-12 grid grid-cols-2 sm:grid-cols-4"
-              style={{ borderRadius: 0 }}>
+            <div
+              className="mt-14 grid grid-cols-2 sm:grid-cols-4"
+              style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
+            >
               {caso.stats.map((s, i) => (
-                <div key={s.l} className="p-6"
-                  style={{ borderRight: i < caso.stats.length - 1 ? "1px solid var(--border)" : "none", borderBottom: "1px solid var(--border)" }}>
-                  <div className="font-display tight text-[clamp(18px,2vw,24px)]" style={{ color: i % 2 ? "var(--gold)" : "var(--terra)" }}>{s.v}</div>
-                  <div className="mono-meta mt-2 leading-snug">{s.l}</div>
+                <div
+                  key={s.l}
+                  className="py-7 sm:py-8"
+                  style={{
+                    borderRight: i < caso.stats.length - 1 ? "1px solid var(--border)" : "none",
+                    paddingInline: "clamp(0px, 2vw, 22px)",
+                  }}
+                >
+                  <div
+                    className="font-display tighter"
+                    style={{ fontSize: "clamp(22px, 2.7vw, 34px)", lineHeight: 1.08, color: i % 2 ? "var(--gold)" : "var(--terra)" }}
+                  >
+                    {s.v}
+                  </div>
+                  <div className="mono-meta mt-3 leading-snug">{s.l}</div>
                 </div>
               ))}
             </div>
           </Reveal>
 
-          {/* bloques */}
+          {/* el sistema — la viz nativa del proyecto como evidencia */}
+          {Viz && (
+            <Reveal delay={0.2}>
+              <div className="mt-20">
+                <BlockLabel>El sistema</BlockLabel>
+                <div className="mt-7 grid items-center gap-8 sm:grid-cols-[1.1fr_1fr]">
+                  <div className="mx-auto w-full" style={{ maxWidth: 480 }}>
+                    <Viz />
+                  </div>
+                  <p className="max-w-sm text-[15px] leading-relaxed text-muted">
+                    {caso.systemNote}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          )}
+
+          {/* bloques narrativos */}
           <div className="mt-20 space-y-16">
             {caso.blocks.map((b) => (
               <Reveal key={b.heading}>
-                <div className="flex items-center gap-3">
-                  <Chakana size={14} color="var(--terra)" />
-                  <span className="mono-label">{b.label}</span>
-                </div>
+                <BlockLabel>{b.label}</BlockLabel>
                 <h2 className="font-display tight mt-4 text-ink" style={{ fontSize: "clamp(22px, 3vw, 32px)", lineHeight: 1.1 }}>
                   {b.heading}
                 </h2>
@@ -93,26 +132,21 @@ export default function CasoEstudio({ caso }: { caso: Caso }) {
               </Reveal>
             ))}
 
-            {/* stack */}
+            {/* stack — línea mono corrida, sin pills */}
             <Reveal>
-              <div className="flex items-center gap-3">
-                <Chakana size={14} color="var(--terra)" />
-                <span className="mono-label">Stack</span>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {caso.stack.map((t) => (
-                  <span key={t} className="font-mono px-3 py-1.5 text-[13px]"
-                    style={{ border: "1px solid var(--border)", background: "var(--surface)", color: "var(--muted)" }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
+              <BlockLabel>Stack</BlockLabel>
+              <p
+                className="font-mono mt-5 text-[13px] leading-relaxed"
+                style={{ color: "var(--muted)", letterSpacing: ".04em" }}
+              >
+                {caso.stack.join("   ·   ")}
+              </p>
             </Reveal>
           </div>
 
           {/* CTA */}
           <Reveal>
-            <div className="stepped mt-20 p-10 text-center">
+            <div className="stepped mt-24 p-10 text-center">
               <Chakana size={22} color="var(--gold)" className="mx-auto mb-5 opacity-60" />
               <h3 className="font-display tight text-[clamp(20px,2.5vw,26px)] text-ink">{caso.cta.heading}</h3>
               <p className="mt-2 text-[15px] text-muted">{caso.cta.text}</p>
