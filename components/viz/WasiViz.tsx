@@ -24,7 +24,7 @@ function cellColor(v: number) {
 
 export default function WasiViz() {
   return (
-    <VizFrame label="WASI" badge="SPATIAL" footL="" footR="LIVE">
+    <VizFrame label="PRICING" badge="SPATIAL" footL="" footR="LIVE">
       <div
         className="w-full"
         style={{

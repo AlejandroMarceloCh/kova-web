@@ -16,7 +16,7 @@ const roster = [
 
 export default function ChammyViz() {
   return (
-    <VizFrame label="CHAMMY" badge="AUTO" footL="" footR="LIVE">
+    <VizFrame label="ROSTER" badge="AUTO" footL="" footR="LIVE">
       <div className="flex w-full flex-col justify-center gap-2.5">
         {/* curva de demanda */}
         <div className="flex items-end gap-1.5" style={{ height: 34 }}>

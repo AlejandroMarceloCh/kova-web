@@ -10,96 +10,103 @@ import ChammyViz from "./viz/ChammyViz";
 import GeoAssayViz from "./viz/GeoAssayViz";
 import AmelieViz from "./viz/AmelieViz";
 
-const projects: {
-  title: string;
-  desc: string;
-  href?: string;
-  Viz: ComponentType;
-}[] = [
+type Proyecto = { title: string; desc: string; Viz: ComponentType };
+type Grupo = { tipo: string; items: Proyecto[] };
+
+const grupos: Grupo[] = [
   {
-    title: "Wasi Price Engine",
-    desc: "Los portales muestran precios de publicación, no de mercado. Wasi predice el precio real por zona — y explica por qué.",
-    href: "/trabajos/wasi",
-    Viz: WasiViz,
+    tipo: "Machine Learning & Datos",
+    items: [
+      {
+        title: "Motor de precios inmobiliarios",
+        desc: "Los portales muestran precios de publicación, no de mercado. Construimos un modelo que predice el precio real por zona — y explica cada estimación. Del scraping al producto en producción.",
+        Viz: WasiViz,
+      },
+    ],
   },
   {
-    title: "Inmoba",
-    desc: "Invertir en ladrillo en Perú era decidir a ciegas. Inmoba convierte datos de mercado en decisiones concretas.",
-    href: "/trabajos/inmoba",
-    Viz: InmobaViz,
+    tipo: "Plataformas a medida",
+    items: [
+      {
+        title: "Plataforma de inversión inmobiliaria",
+        desc: "Invertir en ladrillo era decidir a ciegas. La plataforma convierte datos de mercado en decisiones concretas: recomendación, análisis y seguimiento en un solo producto.",
+        Viz: InmobaViz,
+      },
+      {
+        title: "Sistema de reservas para hospedaje",
+        desc: "Un negocio que perdía reservas por no tener sistema propio. Ahora tiene calendario, disponibilidad en vivo y reserva directa — sin depender de intermediarios.",
+        Viz: AmelieViz,
+      },
+    ],
   },
   {
-    title: "ERP de Costos Industriales",
-    desc: "El cierre de mes tomaba días en Excel. Ahora la gerencia ve costos por producto en tiempo real y simula escenarios al instante.",
-    href: "/trabajos/erp",
-    Viz: ErpViz,
+    tipo: "ERP & Operaciones",
+    items: [
+      {
+        title: "ERP de costos industriales",
+        desc: "El cierre de mes tomaba días en Excel. Centralizamos costos, inventario y producción en dashboards que la gerencia consulta en tiempo real y simula al instante.",
+        Viz: ErpViz,
+      },
+    ],
   },
   {
-    title: "Chammy Workforce Optimizer",
-    desc: "El resort no puede saber cuántos instructores necesita el sábado — hasta que nieva. El sistema lee el pronóstico y arma el roster solo.",
-    Viz: ChammyViz,
-  },
-  {
-    title: "GeoAssay Lab Scheduler",
-    desc: "Asignar turnos en un laboratorio de geoanálisis es un problema de restricciones. Lo resolvimos con un solver que supera la planificación manual.",
-    Viz: GeoAssayViz,
-  },
-  {
-    title: "Amelie",
-    desc: "Un hospedaje en Quives que perdía reservas por no tener sistema propio. Ahora tiene calendario, disponibilidad en vivo y reserva directa.",
-    Viz: AmelieViz,
+    tipo: "Optimización",
+    items: [
+      {
+        title: "Optimizador de turnos por demanda",
+        desc: "Dimensionar al personal según la demanda es un dolor de cabeza semanal. El sistema lee el pronóstico y arma el roster solo.",
+        Viz: ChammyViz,
+      },
+      {
+        title: "Scheduler con solver de restricciones",
+        desc: "Asignar turnos y recursos bajo múltiples restricciones es un problema de optimización. Lo resolvimos con un solver que supera la planificación manual.",
+        Viz: GeoAssayViz,
+      },
+    ],
   },
 ];
 
 export default function Portfolio() {
   return (
-    <section id="capacidades" className="hairline">
+    <section id="trabajos" className="hairline">
       <div className="shell py-24 sm:py-32">
-        <SectionLabel kicker="Capacidades" heading="Lo que sabemos construir." />
+        <SectionLabel kicker="Trabajos" heading="Lo que hemos construido." />
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, ease: [0.22, 0.8, 0.2, 1] }}
-          className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {projects.map((p) => {
-            const Card = (
-              <>
-                <p.Viz />
-                <div className="mt-5">
-                  <h3 className="font-display tight text-[clamp(17px,2vw,21px)] text-ink">
-                    {p.href && (
-                      <svg
-                        className="mr-1.5 inline opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-px"
-                        style={{ color: "var(--terra)" }}
-                        width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
-                      >
-                        <path d="M7 17L17 7M17 7H7M17 7v10" />
-                      </svg>
-                    )}
-                    <span className={p.href ? "transition-colors group-hover:text-[var(--terra)]" : ""}>
-                      {p.title}
-                    </span>
-                  </h3>
-                  <p className="mt-2 text-[14px] leading-relaxed" style={{ color: "var(--muted)" }}>
-                    {p.desc}
-                  </p>
-                </div>
-              </>
-            );
-
-            return p.href ? (
-              <a key={p.title} href={p.href} className="group no-tap">
-                {Card}
-              </a>
-            ) : (
-              <div key={p.title} className="group">
-                {Card}
+        <div className="space-y-16">
+          {grupos.map((g, gi) => (
+            <motion.div
+              key={g.tipo}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: gi * 0.04, ease: [0.22, 0.8, 0.2, 1] }}
+            >
+              <div
+                className="mb-8 flex items-center gap-4"
+                style={{ borderTop: "1px solid var(--border)", paddingTop: "18px" }}
+              >
+                <span className="mono-label">{g.tipo}</span>
+                <span className="mono-meta" style={{ color: "var(--muted-2)" }}>
+                  {String(g.items.length).padStart(2, "0")}
+                </span>
               </div>
-            );
-          })}
-        </motion.div>
+
+              <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                {g.items.map((p) => (
+                  <div key={p.title}>
+                    <p.Viz />
+                    <h3 className="font-display tight mt-5 text-[clamp(17px,2vw,21px)] text-ink">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-[14px] leading-relaxed" style={{ color: "var(--muted)" }}>
+                      {p.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ const scores = [0.96, 0.88, 0.71, 0.58, 0.43];
 
 export default function InmobaViz() {
   return (
-    <VizFrame label="INMOBA" badge="ML MATCH" footL="" footR="LIVE">
+    <VizFrame label="MATCH" badge="ML MATCH" footL="" footR="LIVE">
       <div className="flex w-full flex-col justify-center gap-3">
         {scores.map((score, i) => (
           <motion.div

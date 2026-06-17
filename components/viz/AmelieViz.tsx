@@ -20,7 +20,7 @@ function cellBg(v: number) {
 
 export default function AmelieViz() {
   return (
-    <VizFrame label="AMELIE" badge="AVAILABILITY" footL="" footR="LIVE">
+    <VizFrame label="RESERVAS" badge="AVAILABILITY" footL="" footR="LIVE">
       <div
         className="w-full self-center"
         style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "4px" }}

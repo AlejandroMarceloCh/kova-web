@@ -15,7 +15,7 @@ const tareas = [
 
 export default function GeoAssayViz() {
   return (
-    <VizFrame label="GEOASSAY" badge="OPTIMAL" footL="" footR="SOLVER">
+    <VizFrame label="SCHEDULE" badge="OPTIMAL" footL="" footR="SOLVER">
       <div className="flex w-full flex-col justify-center gap-1.5">
         {tareas.map((t, i) => (
           <div key={i} className="flex items-center" style={{ height: 9 }}>
