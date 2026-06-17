@@ -33,7 +33,7 @@ export default function Equipo() {
   return (
     <section id="equipo" className="hairline">
       <div className="shell py-24 sm:py-32">
-        <SectionLabel kicker="Quiénes somos" heading={<>Quien construye<br />es quien te responde.</>} />
+        <SectionLabel kicker="Quiénes somos" heading="Acceso directo a quienes construyen." />
 
         <div className="grid gap-px sm:grid-cols-2" style={{ background: "var(--border)", border: "1px solid var(--border)" }}>
           {team.map((m, i) => (
