@@ -58,7 +58,7 @@ export default function Nav() {
           </div>
 
           <a href="#contacto" className="btn-terra !py-2 !px-4 !text-[13px] no-tap">
-            Hablemos
+            Contacto
           </a>
         </nav>
       </div>
