@@ -16,7 +16,7 @@ const team = [
     name: "Diego Guerra Chevarría",
     role: "ML & AI Lead",
     bio: "ML Engineer en Yape. Ex-CTO de Inmoba (Startup Perú 11G). Recomendación e IA generativa a escala.",
-    href: "https://pe.linkedin.com/in/diego-guerra-ch",
+    href: "https://www.linkedin.com/in/diego-guerra-ch/",
     accent: "var(--terra)",
   },
   {
@@ -24,7 +24,7 @@ const team = [
     name: "Alejandro Marcelo",
     role: "Data Engineering & Full Stack Lead",
     bio: "Construye productos de datos de punta a punta. ERPs, analítica y ML en producción para empresas en Lima.",
-    href: "#",
+    href: "https://www.linkedin.com/in/alejandro-marcelo-374a88239/",
     accent: "var(--gold)",
   },
 ];

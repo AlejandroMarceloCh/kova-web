@@ -3,32 +3,46 @@
 import { motion } from "motion/react";
 import VizFrame from "./VizFrame";
 
-const bars = [
-  { w: "72%", gold: false },
-  { w: "48%", gold: false },
-  { w: "31%", gold: false },
-  { w: "19%", gold: true },
-  { w: "11%", gold: false },
+const blocks = [
+  { col: "1 / 3", row: "1 / 3", bg: "var(--terra)", opacity: 0.65 },
+  { col: "3",     row: "1",     bg: "var(--terra)", opacity: 0.4  },
+  { col: "3",     row: "2",     bg: "var(--gold)",  opacity: 0.9  },
+  { col: "1",     row: "3",     bg: "var(--terra)", opacity: 0.25 },
+  { col: "2",     row: "3",     bg: "var(--terra)", opacity: 0.2  },
+  { col: "3",     row: "3",     bg: "var(--terra)", opacity: 0.15 },
 ];
 
 export default function ErpViz() {
   return (
-    <VizFrame label="ERP" badge="REAL-TIME" footL="" footR="SYNC">
-      <div className="flex w-full flex-col justify-center gap-3">
-        {bars.map((b, i) => (
-          <div key={i} style={{ height: 6, background: "rgba(242,233,216,0.06)", borderRadius: 3 }}>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: b.w }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 + i * 0.09, ease: [0.22, 0.8, 0.2, 1] }}
-              style={{
-                height: "100%", borderRadius: 3,
-                background: b.gold ? "var(--gold)" : "var(--terra)",
-                opacity: b.gold ? 1 : 0.55 + i * 0.05,
-              }}
-            />
-          </div>
+    <VizFrame label="ERP" badge="REAL-TIME" footL="SKU LEVEL" footR="SYNC">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "3fr 2fr 2fr",
+          gridTemplateRows: "2fr 2fr 1fr",
+          gap: "3px",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        {blocks.map((b, i) => (
+          <motion.div
+            key={i}
+            initial={{ scaleY: 0, opacity: 0 }}
+            whileInView={{ scaleY: 1, opacity: b.opacity }}
+            viewport={{ once: true }}
+            transition={{
+              scaleY: { duration: 0.55, delay: 0.1 + i * 0.07, ease: [0.22, 0.8, 0.2, 1] },
+              opacity: { duration: 0.3, delay: 0.1 + i * 0.07 },
+            }}
+            style={{
+              gridColumn: b.col,
+              gridRow: b.row,
+              background: b.bg,
+              borderRadius: 2,
+              transformOrigin: "bottom",
+            }}
+          />
         ))}
       </div>
     </VizFrame>
