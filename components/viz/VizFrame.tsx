@@ -12,12 +12,6 @@ type Props = {
   ratio?: string;
 };
 
-/**
- * Marco común de las visualizaciones nativas de Kova.
- * Misma anatomía para todos los proyectos: clip-path andino (stepped),
- * header mono con badge dorado, cuerpo gráfico, footer mono con indicador.
- * El cuerpo lo aporta cada viz — eso es lo único que cambia.
- */
 export default function VizFrame({ label, badge, footL, footR, children, ratio = "16 / 10" }: Props) {
   return (
     <motion.div
