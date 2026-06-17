@@ -3,6 +3,8 @@
 import { motion } from "motion/react";
 import SectionLabel from "./SectionLabel";
 import Mockup from "./Mockup";
+import InmobaViz from "./viz/InmobaViz";
+import ErpViz from "./viz/ErpViz";
 
 const projects = [
   {
@@ -13,6 +15,7 @@ const projects = [
     metric: "Venta + alquiler",
     mockupSrc: "/mockups/wasi-card.webp",
     mockupAlt: "UI de Wasi — mapa de Lima con precios por zona",
+    viz: null,
   },
   {
     href: "/trabajos/inmoba",
@@ -20,8 +23,9 @@ const projects = [
     title: "Inmoba",
     desc: "Plataforma de decisiones inmobiliarias con datos. CTO desde la fundación, fondo CONCYTEC.",
     metric: "Startup Perú 11G",
-    mockupSrc: "/mockups/inmoba-card.webp",
-    mockupAlt: "Dashboard de Inmoba — análisis de mercado inmobiliario",
+    mockupSrc: null,
+    mockupAlt: null,
+    viz: <InmobaViz />,
   },
   {
     href: "/trabajos/erp",
@@ -29,8 +33,9 @@ const projects = [
     title: "ERP & Costos",
     desc: "Gestión centralizada para una industria en Lima. De hojas de cálculo a tiempo real.",
     metric: "0 planillas",
-    mockupSrc: "/mockups/erp-card.webp",
-    mockupAlt: "Panel del ERP — gestión de costos y producción en tiempo real",
+    mockupSrc: null,
+    mockupAlt: null,
+    viz: <ErpViz />,
   },
 ];
 
@@ -74,7 +79,7 @@ export default function Trabajos() {
 
               <div className="flex flex-col items-end gap-3">
                 <div className="hidden w-[180px] sm:block">
-                  <Mockup src={p.mockupSrc} alt={p.mockupAlt} ratio="16 / 10" />
+                  {p.viz ? p.viz : <Mockup src={p.mockupSrc!} alt={p.mockupAlt!} ratio="16 / 10" />}
                 </div>
                 <span className="font-mono whitespace-nowrap text-[13px]" style={{ color: "var(--gold)" }}>
                   {p.metric}
