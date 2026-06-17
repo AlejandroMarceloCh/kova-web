@@ -16,7 +16,6 @@ const team = [
     name: "Diego Guerra Chevarría",
     role: "ML & AI Lead",
     bio: "ML Engineer en Yape. Ex-CTO de Inmoba (Startup Perú 11G). Recomendación e IA generativa a escala.",
-    tags: ["Machine Learning", "GenAI", "Rec Sys", "Python"],
     href: "https://pe.linkedin.com/in/diego-guerra-ch",
     accent: "var(--terra)",
   },
@@ -25,7 +24,6 @@ const team = [
     name: "Alejandro Marcelo",
     role: "Data Engineering & Full Stack Lead",
     bio: "Full stack de productos de datos. ERPs, analítica y ML en producción para empresas en Lima.",
-    tags: ["Python", "React", "FastAPI", "XGBoost"],
     href: "#",
     accent: "var(--gold)",
   },
@@ -55,14 +53,6 @@ export default function Equipo() {
               <div className="font-display tight mt-5 text-[19px] text-ink">{m.name}</div>
               <div className="mono-meta mt-1.5">{m.role}</div>
               <p className="mt-5 text-[14px] leading-relaxed text-muted">{m.bio}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {m.tags.map((t) => (
-                  <span key={t} className="font-mono px-2.5 py-1 text-[11px]"
-                    style={{ border: "1px solid var(--border)", color: "var(--muted)" }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
               <a href={m.href} target={m.href.startsWith("http") ? "_blank" : undefined} rel="noopener"
                 className="mt-6 inline-flex items-center gap-1.5 text-[13px] text-muted transition-colors hover:text-[var(--terra)] no-tap">
                 <LinkedInIcon /> LinkedIn

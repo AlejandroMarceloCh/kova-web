@@ -9,7 +9,6 @@ import ErpViz from "./viz/ErpViz";
 const projects = [
   {
     href: "/trabajos/wasi",
-    tag: "PropTech · Machine Learning",
     title: "Wasi",
     desc: "Nadie sabe cuánto vale realmente un depa en Lima. Wasi predice el precio por zona — y explica el porqué.",
     metric: "Venta + alquiler",
@@ -19,7 +18,6 @@ const projects = [
   },
   {
     href: "/trabajos/inmoba",
-    tag: "PropTech · Startup Perú 11G",
     title: "Inmoba",
     desc: "Plataforma de decisiones inmobiliarias con datos. CTO desde la fundación, fondo CONCYTEC.",
     metric: "Startup Perú 11G",
@@ -29,7 +27,6 @@ const projects = [
   },
   {
     href: "/trabajos/erp",
-    tag: "ERP · Industria",
     title: "ERP & Costos",
     desc: "Gestión centralizada para una industria en Lima. De hojas de cálculo a tiempo real.",
     metric: "0 planillas",
@@ -62,7 +59,6 @@ export default function Trabajos() {
             >
               <div className="grid gap-2 sm:grid-cols-[1fr_1.3fr] sm:items-center sm:gap-12">
                 <div>
-                  <div className="mono-meta mb-2">{p.tag}</div>
                   <h3 className="font-display tight inline-flex items-center gap-3 text-[clamp(22px,2.8vw,30px)] text-ink transition-colors group-hover:text-[var(--terra)]">
                     {p.title}
                     <svg

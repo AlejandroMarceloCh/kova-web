@@ -38,17 +38,6 @@ export default function CasoEstudio({ caso }: { caso: Caso }) {
         </div>
 
         <div className="shell relative max-w-4xl">
-          {/* eyebrow */}
-          <Reveal>
-            <div className="mb-5 flex flex-wrap items-center gap-2">
-              {caso.eyebrow.map((e) => (
-                <span key={e} className="font-mono px-3 py-1 text-[11px]"
-                  style={{ border: "1px solid var(--border)", background: "var(--surface)", color: "var(--muted)", letterSpacing: ".08em" }}>
-                  {e}
-                </span>
-              ))}
-            </div>
-          </Reveal>
 
           <Reveal delay={0.05}>
             <h1 className="font-display tighter text-ink" style={{ fontSize: "clamp(30px, 5vw, 56px)", lineHeight: 1.05 }}>

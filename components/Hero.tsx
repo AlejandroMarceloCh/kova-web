@@ -18,7 +18,7 @@ export default function Hero() {
           {/* texto */}
           <motion.div variants={container} initial="hidden" animate="show">
             <motion.p variants={item} className="mono-label mb-8">
-              Estudio de ingeniería · Lima, Perú
+              Ciencia de datos y software · Lima, Perú
             </motion.p>
 
             <motion.h1
