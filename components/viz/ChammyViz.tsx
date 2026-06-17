@@ -3,11 +3,9 @@
 import { motion } from "motion/react";
 import VizFrame from "./VizFrame";
 
-// demanda semanal: 7 días
 const demand = [0.3, 0.5, 0.45, 0.72, 0.9, 1.0, 0.72];
 const dias = ["L", "M", "M", "J", "V", "S", "D"];
 
-// SVG viewport 100 × 46 para la curva
 const W = 100;
 const H = 46;
 
@@ -19,7 +17,6 @@ const pts = demand.map((d, i) => ({
 const linePath = pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
 const areaPath = `M 0 ${H} ${linePath.slice(1)} L ${W} ${H} Z`;
 
-// 4 roles × 7 días
 const roster = [
   [1, 1, 1, 1, 1, 1, 1],
   [0, 1, 0, 1, 1, 1, 1],
@@ -31,14 +28,14 @@ export default function ChammyViz() {
   return (
     <VizFrame label="ROSTER" badge="AUTO" footL="7D" footR="LIVE">
       <div className="flex w-full flex-col gap-2">
-        {/* curva de demanda en SVG */}
+        
         <svg
           viewBox={`0 0 ${W} ${H}`}
           preserveAspectRatio="none"
           style={{ width: "100%", height: 44, overflow: "visible" }}
           aria-hidden="true"
         >
-          {/* área bajo la curva — fade-in estático */}
+          
           <motion.path
             d={areaPath}
             initial={{ opacity: 0 }}
@@ -47,7 +44,7 @@ export default function ChammyViz() {
             transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
             fill="rgba(210,85,42,0.15)"
           />
-          {/* línea de demanda animada */}
+          
           <motion.path
             d={linePath}
             fill="none"
@@ -60,7 +57,7 @@ export default function ChammyViz() {
             viewport={{ once: true }}
             transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 0.8, 0.2, 1] }}
           />
-          {/* puntos de dato */}
+          
           {pts.map((p, i) => (
             <motion.circle
               key={i}
@@ -76,7 +73,7 @@ export default function ChammyViz() {
           ))}
         </svg>
 
-        {/* grilla de turnos */}
+        
         <div className="flex flex-col gap-1">
           {roster.map((fila, r) => (
             <div key={r} className="flex gap-1">

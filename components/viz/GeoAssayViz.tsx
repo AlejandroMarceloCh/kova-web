@@ -3,8 +3,6 @@
 import { motion } from "motion/react";
 import VizFrame from "./VizFrame";
 
-// 4 recursos del lab, cada uno con 2-3 tareas
-// off = offset %, w = duración % del timeline total
 const recursos = [
   {
     label: "R1",
@@ -50,7 +48,7 @@ export default function GeoAssayViz() {
               {rec.label}
             </span>
             <div style={{ position: "relative", flex: 1, height: 9 }}>
-              {/* track de fondo */}
+              
               <div
                 style={{
                   position: "absolute",
@@ -82,7 +80,7 @@ export default function GeoAssayViz() {
             </div>
           </div>
         ))}
-        {/* eje de tiempo */}
+        
         <div className="flex justify-between" style={{ paddingLeft: 14 }}>
           {["t₀", "t₁", "t₂", "t₃", "t₄"].map((t) => (
             <span key={t} className="font-mono" style={{ color: "var(--muted-2)", fontSize: 7.5 }}>

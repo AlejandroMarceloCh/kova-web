@@ -13,7 +13,6 @@ const STROKE = 4.5;
 const CX = 50;
 const CY = 50;
 
-// 270° arc from 135° to 45° clockwise
 function arcPath(r: number): string {
   const toRad = (d: number) => (d * Math.PI) / 180;
   const x1 = (CX + r * Math.cos(toRad(135))).toFixed(2);

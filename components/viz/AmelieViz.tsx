@@ -3,8 +3,6 @@
 import { motion } from "motion/react";
 import VizFrame from "./VizFrame";
 
-// reservas como intervalos [día_entrada, día_salida] sobre un timeline de 14 días
-// offset (%) y ancho (%)
 const reservas = [
   { off: 0,   w: 36, gold: false },
   { off: 7,   w: 21, gold: false },
@@ -25,7 +23,7 @@ export default function AmelieViz() {
             key={i}
             style={{ position: "relative", height: DOT, width: "100%" }}
           >
-            {/* línea de la reserva */}
+            
             <motion.div
               initial={{ width: 0, opacity: 0 }}
               whileInView={{ width: `${r.w}%`, opacity: r.gold ? 0.9 : 0.55 }}
@@ -44,7 +42,7 @@ export default function AmelieViz() {
                 borderRadius: 1,
               }}
             />
-            {/* dot de entrada */}
+            
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -61,7 +59,7 @@ export default function AmelieViz() {
                 background: r.gold ? "var(--gold)" : "var(--terra)",
               }}
             />
-            {/* dot de salida */}
+            
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -81,7 +79,7 @@ export default function AmelieViz() {
             />
           </div>
         ))}
-        {/* eje de tiempo */}
+        
         <div className="flex justify-between">
           {["1", "7", "14", "21", "30"].map((d) => (
             <span key={d} className="font-mono" style={{ color: "var(--muted-2)", fontSize: 7.5 }}>

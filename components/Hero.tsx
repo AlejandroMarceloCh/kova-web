@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="shell flex min-h-[92svh] flex-col justify-center pb-24 pt-36">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
 
-          {/* texto */}
+          
           <motion.div variants={container} initial="hidden" animate="show">
             <motion.p variants={item} className="mono-label mb-8">
               Ciencia de datos y software · Lima, Perú
@@ -50,7 +50,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* imagen sin frame — sangra al fondo oscuro */}
+          
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
@@ -70,7 +70,7 @@ export default function Hero() {
                 WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 55% 50%, black 55%, transparent 100%)",
               }}
             />
-            {/* wordmark sobre la imagen */}
+            
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
