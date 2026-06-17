@@ -19,7 +19,7 @@ const grupos: Grupo[] = [
     items: [
       {
         title: "Motor de precios inmobiliarios",
-        desc: "Los portales muestran precios de publicación, no de mercado. Construimos un modelo que predice el precio real por zona — y explica cada estimación. Del scraping al producto en producción.",
+        desc: "Pipeline completo: scraping de avisos reales, dos modelos por mercado, API con explicabilidad por zona. El precio que predice no es un promedio — es específico y trazable.",
         Viz: WasiViz,
       },
     ],
@@ -29,12 +29,12 @@ const grupos: Grupo[] = [
     items: [
       {
         title: "Plataforma de inversión inmobiliaria",
-        desc: "Invertir en ladrillo era decidir a ciegas. La plataforma convierte datos de mercado en decisiones concretas: recomendación, análisis y seguimiento en un solo producto.",
+        desc: "Motor de recomendación que cruza perfil del inversionista con señales de mercado. Stack completo: datos, modelo y producto. Ganadora del fondo de innovación del CONCYTEC.",
         Viz: InmobaViz,
       },
       {
         title: "Sistema de reservas para hospedaje",
-        desc: "Un negocio que perdía reservas por no tener sistema propio. Ahora tiene calendario, disponibilidad en vivo y reserva directa — sin depender de intermediarios.",
+        desc: "Calendario de disponibilidad, confirmación automática y reserva directa. Infraestructura digital construida desde cero para un negocio que operaba solo por teléfono.",
         Viz: AmelieViz,
       },
     ],
@@ -44,7 +44,7 @@ const grupos: Grupo[] = [
     items: [
       {
         title: "ERP de costos industriales",
-        desc: "El cierre de mes tomaba días en Excel. Centralizamos costos, inventario y producción en dashboards que la gerencia consulta en tiempo real y simula al instante.",
+        desc: "Visibilidad de costo por SKU, trazabilidad de insumos y simulador de escenarios. Cierre mensual automatizado. La gerencia ve el margen real de cada producto — no el estimado.",
         Viz: ErpViz,
       },
     ],
@@ -53,13 +53,13 @@ const grupos: Grupo[] = [
     tipo: "Optimización",
     items: [
       {
-        title: "Optimizador de turnos por demanda",
-        desc: "Dimensionar al personal según la demanda es un dolor de cabeza semanal. El sistema lee el pronóstico y arma el roster solo.",
+        title: "Asignación de personal por pronóstico",
+        desc: "El sistema lee la demanda proyectada y genera el roster de turnos respetando restricciones de roles y disponibilidad. Cero iteraciones manuales.",
         Viz: ChammyViz,
       },
       {
         title: "Scheduler con solver de restricciones",
-        desc: "Asignar turnos y recursos bajo múltiples restricciones es un problema de optimización. Lo resolvimos con un solver que supera la planificación manual.",
+        desc: "Problema de scheduling con restricciones duras (capacidad, equipo, secuencia). Implementado con búsqueda tabú. Mejora el plan manual en tiempo de cómputo de segundos.",
         Viz: GeoAssayViz,
       },
     ],
