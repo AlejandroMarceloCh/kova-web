@@ -15,7 +15,7 @@ const team = [
     initials: "DG",
     name: "Diego Guerra Chevarría",
     role: "ML & AI Lead",
-    bio: "ML Engineer en Yape. Ex-CTO de Inmoba (Startup Perú 11G). Recomendación e IA generativa a escala.",
+    bio: "ML Engineer en Yape. Ex-CTO de Inmoba (Startup Perú 11G). Sistemas de recomendación e IA generativa a escala.",
     href: "https://www.linkedin.com/in/diego-guerra-ch/",
     accent: "var(--terra)",
   },
