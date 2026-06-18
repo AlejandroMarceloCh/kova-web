@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Unbounded, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE_URL } from "@/lib/site";
+import MotionProvider from "@/components/MotionProvider";
 import "./globals.css";
 
 const unbounded = Unbounded({
@@ -24,7 +28,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kova.pe"),
+  metadataBase: new URL(SITE_URL),
   title: "Kova — Construimos la ventaja que tu operación todavía no tiene.",
   description:
     "Estudio de ingeniería de datos y ML en Lima. Construimos sistemas que funcionan en producción — y nos quedamos.",
@@ -68,6 +72,29 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Kova",
+  description:
+    "Estudio de ingeniería de datos y ML en Lima. Construimos software a medida, machine learning aplicado, analítica y automatización en producción.",
+  url: SITE_URL,
+  image: `${SITE_URL}/og.jpg`,
+  areaServed: { "@type": "City", name: "Lima" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lima",
+    addressCountry: "PE",
+  },
+  knowsAbout: [
+    "Machine Learning",
+    "Ingeniería de datos",
+    "Software a medida",
+    "Automatización de procesos",
+    "Analítica de datos",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -77,10 +104,16 @@ export default function RootLayout({
       className={`${unbounded.variable} ${hanken.variable} ${mono.variable}`}
     >
       <body className="grain">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <a href="#contenido-principal" className="skip-link">
           Ir al contenido principal
         </a>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

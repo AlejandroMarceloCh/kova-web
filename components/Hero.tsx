@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
+import kovaFlow from "@/public/mockups/kova-flow.png";
 
 const ease = [0.22, 0.8, 0.2, 1] as const;
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } } };
@@ -58,18 +60,20 @@ export default function Hero() {
             className="hidden lg:block"
             style={{ position: "relative" }}
           >
-            <img
-              src="/mockups/kova-flow.png"
-              alt="Kova — flujo de datos"
-              style={{
-                width: "100%",
-                aspectRatio: "16 / 10",
-                objectFit: "cover",
-                display: "block",
-                maskImage: "radial-gradient(ellipse 85% 85% at 55% 50%, black 55%, transparent 100%)",
-                WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 55% 50%, black 55%, transparent 100%)",
-              }}
-            />
+            <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 10" }}>
+              <Image
+                src={kovaFlow}
+                alt="Kova — flujo de datos"
+                fill
+                priority
+                sizes="(min-width: 1024px) 45vw, 1px"
+                style={{
+                  objectFit: "cover",
+                  maskImage: "radial-gradient(ellipse 85% 85% at 55% 50%, black 55%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 55% 50%, black 55%, transparent 100%)",
+                }}
+              />
+            </div>
             
             <motion.div
               initial={{ opacity: 0 }}
