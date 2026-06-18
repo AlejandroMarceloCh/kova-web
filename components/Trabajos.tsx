@@ -121,7 +121,7 @@ const grupos: Grupo[] = [
   },
 ];
 
-export default function Portfolio() {
+export default function Trabajos() {
   const [sel, setSel] = useState<Proyecto | null>(null);
 
   return (

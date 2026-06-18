@@ -1,6 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Portfolio from "@/components/Portfolio";
+import Trabajos from "@/components/Trabajos";
 import Servicios from "@/components/Servicios";
 import Proceso from "@/components/Proceso";
 import Equipo from "@/components/Equipo";
@@ -13,7 +13,7 @@ export default function Home() {
       <Nav />
       <main id="contenido-principal">
         <Hero />
-        <Portfolio />
+        <Trabajos />
         <Servicios />
         <Proceso />
         <Equipo />
